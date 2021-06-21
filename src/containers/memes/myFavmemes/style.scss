@@ -1,0 +1,17 @@
+.meme-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .fav-meme-wrapper{
+        text-align: center;
+        .ant-card{
+            flex: 1 0 21%;
+            margin: 5px;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+  
+}
