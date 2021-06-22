@@ -7,7 +7,8 @@ import { Card, Modal } from 'antd';
 import { IMeme } from '../../../interface';
 import Button from '../../../components/button';
 import GenerateMeme from '../../generateMeme';
-
+import DropDownMenu from '../../../components/dropdown';
+import { getMemes } from '../../../actions/MemeActions';
 import './style.scss'
 const AllMemes: FC = () => {
     const {
@@ -32,7 +33,22 @@ const AllMemes: FC = () => {
         setMemeImage(image)
         setOpenModal(true)
     }
+
+
+    const sortByCaption = (order: string): void => {
+       
+           const ascendingSortedmemes =  (order === 'assending') ? 
+                                          memes.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.tags > b.tags)? 1: -1): -1)
+                                         : memes.sort((a, b) => (a.name > b.name) ? -1 : (a.name === b.name) ? ((a.tags > b.tags)? -1: 1): 1)
+           dispatch(getMemes(ascendingSortedmemes))
+    }
+
     return (
+        <div>
+            <div className="drop-down-search">
+                <DropDownMenu onClick={(order) =>sortByCaption(order)}/>
+            </div>
+            
         <div className="meme-container">
            <Modal visible={openModal} onCancel={handleCloseModal} footer={null}>
                <GenerateMeme image={image} />
@@ -51,8 +67,7 @@ const AllMemes: FC = () => {
                )): <ClipLoader color={"#FF0000"} loading={isLoading}  size={250}/>
 
            }
-           
-           
+        </div>
         </div>
     )
 }

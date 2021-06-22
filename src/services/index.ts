@@ -89,3 +89,18 @@ export const getCustomMemes = (dispatch: Dispatch<IContextAction>, state: IConte
     }
 }
 
+
+export const searchCustomMeme = (dispatch: Dispatch<IContextAction>, state: IContextState , urlParam: string): void => {
+
+    if(!state.isLoading){
+        axios.get<ICustomMeme[]>(`${url}fav-memes-search?caption=${urlParam}`, {headers})
+        .then((response => {
+              dispatch(apiRequest());
+              dispatch(getMyCustomMemes(response.data));
+
+        })).catch((error) => {
+            dispatch(getMyCustomMemesFailure(error));
+            console.log(error)
+        });
+    };
+};
