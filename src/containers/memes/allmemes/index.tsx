@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState} from 'react';
+import React, { FC, useContext, useState} from 'react';
 import {Context as MemeContext } from '../../../context';
 import {ClipLoader} from 'react-spinners';
 import {getAllMemes} from '../../../services';
@@ -9,7 +9,8 @@ import Button from '../../../components/button';
 import GenerateMeme from '../../generateMeme';
 import DropDownMenu from '../../../components/dropdown';
 import { getMemes } from '../../../actions/MemeActions';
-import './style.scss'
+import './style.scss';
+
 const AllMemes: FC = () => {
     const {
         state: {memes, isLoading},
@@ -17,7 +18,7 @@ const AllMemes: FC = () => {
         state
     } = useContext(MemeContext)
 
-    useEffect(() => {
+    React.useEffect(() => {
         getAllMemes(dispatch, state)
     }, [])
 

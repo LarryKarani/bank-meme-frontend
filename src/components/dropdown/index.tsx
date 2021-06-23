@@ -9,10 +9,10 @@ const DropDownMenu: FC<IDropDownMenuProps> = ({onClick}) => {
 
     const menu = (
         <Menu>
-            <Menu.Item onClick={() => onClick('assending')}>
+            <Menu.Item onClick={() => onClick('ascending')} data-testid="ascending-sort">
                     Ascending Order 
             </Menu.Item>
-            <Menu.Item onClick={() => onClick('descending')}>
+            <Menu.Item onClick={() => onClick('descending')} data-testid="descending-sort">
                     Descending Order
             </Menu.Item>
         </Menu>

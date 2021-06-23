@@ -21,7 +21,6 @@ export const getAllMemes = (dispatch: Dispatch<IContextAction>, state: IContextS
         .then((response => {
               dispatch(apiRequest());
               dispatch(getMemes(response.data))
-              toast('Meme Generated successfully')
 
         })).catch((error) => {
             dispatch(getMemesFailure(error));

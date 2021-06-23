@@ -14,7 +14,7 @@ interface IButton {
 
 const Buttom: FC<IButton> = ({text, onclick}) => {
     return (
-        <Button type="primary" onClick={onclick}>{text}</Button>
+        <Button type="primary" onClick={onclick} data-testid="button">{text}</Button>
     )
 }
 
